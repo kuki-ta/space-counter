@@ -97,13 +97,15 @@ function formatCount(n) {
 // no web fonts, no network requests — so it renders correctly wherever
 // GitHub's image proxy decides to display it.
 //
-// Design notes:
-//   - Deep space background: #07060f (near-black with a faint blue tint)
-//   - Three overlapping radial gradients simulate a nebula glow
-//   - A thin horizontal scanline sweeps top-to-bottom on a 4s loop
-//   - Stars are clipped to the card's rounded rect so nothing bleeds outside
-//   - The count is monospace bold at 58px — large enough to read at badge size
-//   - Canvas is 150px tall (down from 160) so top/bottom padding feels even
+// Vertical layout (canvas height: 150px):
+//   y=52  — top label ("KUKITA'S CORNER")
+//   y=108 — count (58px font, baseline here, cap-height starts around y=60)
+//   y=134 — subtitle text
+//   y=118 — decorative lines (between count and subtitle)
+//
+// Top padding above label:  ~40px
+// Bottom padding below text: ~16px
+// Close enough given SVG y is baseline, not top-of-glyph.
 function buildSvg(count, username) {
   const displayCount = formatCount(count);
 
@@ -115,7 +117,7 @@ function buildSvg(count, username) {
   // Top label — sets the scene before the number lands.
   const label = "KUKITA'S CORNER";
 
-  return `<svg width="100%" viewBox="0 0 680 165" xmlns="http://www.w3.org/2000/svg" role="img">
+  return `<svg width="100%" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" role="img">
   <title>${username || 'Profile'} view counter: ${count.toLocaleString()} visitors</title>
   <desc>An animated space-themed counter showing ${count.toLocaleString()} profile views for ${username}</desc>
 
@@ -189,7 +191,7 @@ function buildSvg(count, username) {
 
     <!-- Top and bottom border lines -->
     <line x1="0" y1="0"   x2="680" y2="0"   stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
-    <line x1="0" y1="148" x2="680" y2="149" stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
+    <line x1="0" y1="149" x2="680" y2="149" stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
 
     <!-- Label — sits above the number, sets the scene -->
     <text x="340" y="52"
@@ -203,17 +205,17 @@ function buildSvg(count, username) {
       fill="#EEEDFE"
       text-anchor="middle" letter-spacing="8">${displayCount}</text>
 
-    <!-- Subtitle — completes the sentence started by the count -->
-    <text x="340" y="140"
+    <!-- Subtitle — completes the scene -->
+    <text x="340" y="134"
       font-family="monospace" font-size="10"
       fill="#7F77DD" opacity=".8"
       text-anchor="middle" letter-spacing="3">EXPLORERS REACHED THIS CORNER OF THE UNIVERSE</text>
 
     <!-- Decorative side lines flanking the subtitle -->
-    <line x1="100" y1="122" x2="240" y2="122" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
-    <line x1="440" y1="122" x2="580" y2="122" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
-    <circle cx="100" cy="122" r="1.5" fill="#7F77DD" opacity=".6"/>
-    <circle cx="580" cy="122" r="1.5" fill="#7F77DD" opacity=".6"/>
+    <line x1="100" y1="118" x2="240" y2="118" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
+    <line x1="440" y1="118" x2="580" y2="118" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
+    <circle cx="100" cy="118" r="1.5" fill="#7F77DD" opacity=".6"/>
+    <circle cx="580" cy="118" r="1.5" fill="#7F77DD" opacity=".6"/>
 
   </g>
 </svg>`;
