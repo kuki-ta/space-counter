@@ -115,7 +115,7 @@ function buildSvg(count, username) {
   // Top label — sets the scene before the number lands.
   const label = "KUKITA'S CORNER";
 
-  return `<svg width="100%" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" role="img">
+  return `<svg width="100%" viewBox="0 0 680 165" xmlns="http://www.w3.org/2000/svg" role="img">
   <title>${username || 'Profile'} view counter: ${count.toLocaleString()} visitors</title>
   <desc>An animated space-themed counter showing ${count.toLocaleString()} profile views for ${username}</desc>
 
