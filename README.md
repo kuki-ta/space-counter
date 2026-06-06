@@ -2,13 +2,7 @@
 
 A GitHub profile view counter with a deep space aesthetic. Animated nebula glow, twinkling stars, a scanline sweep, and a count that increments every time someone visits your profile.
 
-![Space Counter Preview](https://your-deployment.vercel.app/api/count?username=yourusername)
-
----
-
-## Why this exists
-
-Most profile counters are either ugly or someone else's hosted service (meaning their uptime, their rules, their costs). This one you deploy yourself in about 5 minutes — free forever on Vercel + Upstash's free tiers.
+![Space Counter Preview](https://space-counter-five.vercel.app/api/count?username=kuki-ta)
 
 ---
 
@@ -35,7 +29,7 @@ Click **Fork** in the top right on GitHub. This gives you your own copy to deplo
 
 ### Step 3 — Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR_USERNAME/space-counter)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kuki-ta/space-counter)
 
 1. Click the button above (or go to [vercel.com/new](https://vercel.com/new) and import your fork)
 2. When prompted for **Environment Variables**, add:
