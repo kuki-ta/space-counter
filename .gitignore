@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Vercel build output
+.vercel/
+
+# Environment variables — NEVER commit these
+.env
+.env.local
+.env.production
+
+# OS noise
+.DS_Store
+Thumbs.db

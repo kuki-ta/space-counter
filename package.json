@@ -1,0 +1,12 @@
+{
+  "name": "space-counter",
+  "version": "1.0.0",
+  "description": "GitHub profile view counter with space/starfield aesthetic",
+  "private": true,
+  "dependencies": {
+    "@upstash/redis": "^1.34.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
