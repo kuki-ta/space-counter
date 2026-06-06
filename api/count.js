@@ -189,22 +189,22 @@ function buildSvg(count, username) {
 
     <!-- Top and bottom border lines -->
     <line x1="0" y1="0"   x2="680" y2="0"   stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
-    <line x1="0" y1="149" x2="680" y2="149" stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
+    <line x1="0" y1="148" x2="680" y2="149" stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
 
     <!-- Label — sits above the number, sets the scene -->
-    <text x="340" y="46"
+    <text x="340" y="52"
       font-family="monospace" font-size="11" font-weight="400"
       fill="#9FE1CB" opacity=".65"
       text-anchor="middle" letter-spacing="5">✦ ${label} ✦</text>
 
     <!-- The count — this is the main event -->
-    <text x="340" y="106"
+    <text x="340" y="108"
       font-family="monospace" font-size="58" font-weight="700"
       fill="#EEEDFE"
       text-anchor="middle" letter-spacing="8">${displayCount}</text>
 
     <!-- Subtitle — completes the sentence started by the count -->
-    <text x="340" y="136"
+    <text x="340" y="140"
       font-family="monospace" font-size="10"
       fill="#7F77DD" opacity=".8"
       text-anchor="middle" letter-spacing="3">EXPLORERS REACHED THIS CORNER OF THE UNIVERSE</text>
