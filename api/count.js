@@ -111,11 +111,9 @@ function buildSvg(count, username) {
   const starSeed = username.split('').reduce((acc, char) => acc + char.charCodeAt(0), 42);
   const stars = generateStars(28, starSeed);
 
-  // Show "USERNAME · PROFILE VISITORS" if we have a username, otherwise
-  // fall back to just "PROFILE VISITORS"
-  const label = username
-    ? `${username.toUpperCase()} · PROFILE VISITORS`
-    : 'PROFILE VISITORS';
+  // Label is intentionally kept generic — no username prefix.
+  // Keeps the counter clean and works well at any display size.
+  const label = 'PROFILE VISITORS';
 
   return `<svg width="100%" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" role="img">
   <title>${username || 'Profile'} view counter: ${count.toLocaleString()} visitors</title>
