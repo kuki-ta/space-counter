@@ -56,7 +56,7 @@ function generateStars(count, seed) {
     const x = Math.abs(s % 680); // x position within the 680px-wide viewBox
 
     s = (s * 1664525 + 1013904223) & 0xffffffff;
-    const y = Math.abs(s % 160); // y position within the 160px-tall viewBox
+    const y = Math.abs(s % 150); // y position within the 150px-tall viewBox
 
     s = (s * 1664525 + 1013904223) & 0xffffffff;
     const r = 0.5 + (Math.abs(s % 10) / 10) * 1.2; // radius between 0.5 and 1.7px
@@ -103,6 +103,7 @@ function formatCount(n) {
 //   - A thin horizontal scanline sweeps top-to-bottom on a 4s loop
 //   - Stars are clipped to the card's rounded rect so nothing bleeds outside
 //   - The count is monospace bold at 58px — large enough to read at badge size
+//   - Canvas is 150px tall (down from 160) so top/bottom padding feels even
 function buildSvg(count, username) {
   const displayCount = formatCount(count);
 
@@ -111,11 +112,10 @@ function buildSvg(count, username) {
   const starSeed = username.split('').reduce((acc, char) => acc + char.charCodeAt(0), 42);
   const stars = generateStars(28, starSeed);
 
-  // Label is intentionally kept generic — no username prefix.
-  // Keeps the counter clean and works well at any display size.
-  const label = 'PROFILE VISITORS';
+  // Top label — sets the scene before the number lands.
+  const label = "KUKITA'S CORNER";
 
-  return `<svg width="100%" viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg" role="img">
+  return `<svg width="100%" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" role="img">
   <title>${username || 'Profile'} view counter: ${count.toLocaleString()} visitors</title>
   <desc>An animated space-themed counter showing ${count.toLocaleString()} profile views for ${username}</desc>
 
@@ -135,7 +135,7 @@ function buildSvg(count, username) {
         0%   { transform:translateY(-10px); opacity:0 }
         10%  { opacity:.15 }
         90%  { opacity:.15 }
-        100% { transform:translateY(140px); opacity:0 }
+        100% { transform:translateY(130px); opacity:0 }
       }
 
       /* Nebula layers breathe slowly at different offsets */
@@ -167,19 +167,19 @@ function buildSvg(count, username) {
 
     <!-- Clip everything to the card's rounded corners -->
     <clipPath id="cc">
-      <rect x="0" y="0" width="680" height="160" rx="12"/>
+      <rect x="0" y="0" width="680" height="150" rx="12"/>
     </clipPath>
   </defs>
 
   <!-- Card background -->
-  <rect x="0" y="0" width="680" height="160" rx="12" fill="#07060f"/>
+  <rect x="0" y="0" width="680" height="150" rx="12" fill="#07060f"/>
 
   <g clip-path="url(#cc)">
 
     <!-- Nebula layers (stacked, each pulsing at a different phase) -->
-    <rect x="0" y="0" width="680" height="160" class="nb" fill="url(#nb1)"/>
-    <rect x="0" y="0" width="680" height="160" class="nb" fill="url(#nb2)" style="animation-delay:-2.3s"/>
-    <rect x="0" y="0" width="680" height="160" class="nb" fill="url(#nb3)" style="animation-delay:-1.1s"/>
+    <rect x="0" y="0" width="680" height="150" class="nb" fill="url(#nb1)"/>
+    <rect x="0" y="0" width="680" height="150" class="nb" fill="url(#nb2)" style="animation-delay:-2.3s"/>
+    <rect x="0" y="0" width="680" height="150" class="nb" fill="url(#nb3)" style="animation-delay:-1.1s"/>
 
     <!-- Stars (deterministically placed based on username) -->
     ${stars}
@@ -189,31 +189,31 @@ function buildSvg(count, username) {
 
     <!-- Top and bottom border lines -->
     <line x1="0" y1="0"   x2="680" y2="0"   stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
-    <line x1="0" y1="159" x2="680" y2="159" stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
+    <line x1="0" y1="149" x2="680" y2="149" stroke="#534AB7" stroke-width="1" stroke-opacity=".4"/>
 
-    <!-- Label -->
-    <text x="340" y="52"
+    <!-- Label — sits above the number, sets the scene -->
+    <text x="340" y="46"
       font-family="monospace" font-size="11" font-weight="400"
       fill="#9FE1CB" opacity=".65"
       text-anchor="middle" letter-spacing="5">✦ ${label} ✦</text>
 
     <!-- The count — this is the main event -->
-    <text x="340" y="112"
+    <text x="340" y="106"
       font-family="monospace" font-size="58" font-weight="700"
       fill="#EEEDFE"
       text-anchor="middle" letter-spacing="8">${displayCount}</text>
 
-    <!-- Subtitle -->
-    <text x="340" y="142"
+    <!-- Subtitle — completes the sentence started by the count -->
+    <text x="340" y="136"
       font-family="monospace" font-size="10"
       fill="#7F77DD" opacity=".8"
       text-anchor="middle" letter-spacing="3">EXPLORERS REACHED THIS CORNER OF THE UNIVERSE</text>
 
     <!-- Decorative side lines flanking the subtitle -->
-    <line x1="100" y1="128" x2="240" y2="128" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
-    <line x1="440" y1="128" x2="580" y2="128" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
-    <circle cx="100" cy="128" r="1.5" fill="#7F77DD" opacity=".6"/>
-    <circle cx="580" cy="128" r="1.5" fill="#7F77DD" opacity=".6"/>
+    <line x1="100" y1="122" x2="240" y2="122" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
+    <line x1="440" y1="122" x2="580" y2="122" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
+    <circle cx="100" cy="122" r="1.5" fill="#7F77DD" opacity=".6"/>
+    <circle cx="580" cy="122" r="1.5" fill="#7F77DD" opacity=".6"/>
 
   </g>
 </svg>`;
