@@ -209,7 +209,7 @@ function buildSvg(count, username) {
     <text x="340" y="126"
       font-family="monospace" font-size="10"
       fill="#7F77DD" opacity=".8"
-      text-anchor="middle" letter-spacing="3">EXPLORERS REACHED THIS CORNER OF THE UNIVERSE</text>
+      text-anchor="middle" letter-spacing="3">EXPLORERS REACHED THIS CORNER OF THE GALAXY</text>
 
     <!-- Decorative side lines flanking the subtitle -->
     <line x1="100" y1="110" x2="240" y2="110" stroke="#534AB7" stroke-width=".5" stroke-opacity=".45"/>
