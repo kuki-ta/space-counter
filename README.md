@@ -2,7 +2,7 @@
 
 A GitHub profile view counter with a deep space aesthetic. Animated nebula glow, twinkling stars, a scanline sweep, and a count that increments every time someone visits your profile.
 
-![Space Counter Preview](https://space-counter-five.vercel.app/api/count?username=kuki-ta)
+[![Profile views](https://space-counter-five.vercel.app/api/count?username=kuki-ta)](https://space-counter-five.vercel.app)
 
 ---
 
