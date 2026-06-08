@@ -98,7 +98,7 @@ function formatCount(n) {
 // GitHub's image proxy decides to display it.
 //
 // Vertical layout (canvas height: 150px):
-//   y=52  — top label ("KUKITA'S CORNER")
+//   y=52  — top label ("JULIA'S CORNER")
 //   y=108 — count (58px font, baseline here, cap-height starts around y=60)
 //   y=134 — subtitle text
 //   y=118 — decorative lines (between count and subtitle)
@@ -115,7 +115,7 @@ function buildSvg(count, username) {
   const stars = generateStars(28, starSeed);
 
   // Top label — sets the scene before the number lands.
-  const label = "KUKITA'S CORNER";
+  const label = "JULIA'S CORNER";
 
   return `<svg width="100%" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg" role="img">
   <title>${username || 'Profile'} view counter: ${count.toLocaleString()} visitors</title>
